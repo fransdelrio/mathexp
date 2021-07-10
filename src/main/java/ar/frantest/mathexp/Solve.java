@@ -13,7 +13,6 @@ public class Solve {
         this.presicion = presicion;
     }
 
-
     public static double solveExpression(String expression, int precision){
         Resolver solver = new Resolver();
 
@@ -22,6 +21,7 @@ public class Solve {
         solver.setExpression(expression);
 
         double result = 0;
+        String msg="";
         if (solver.solveExpression().success) { //ok
             result = solver.getLastResult();
             if (precision == 0) {
@@ -31,8 +31,10 @@ public class Solve {
                 System.out.println(result);
             }
         } else { //error
-            System.out.println("Wrong expression dude, try again!");
+            msg = "Wrong expression dude, please try again!";
+            System.out.println(msg);
         }
+
         return result;
     } //end method solveExpression
 }
