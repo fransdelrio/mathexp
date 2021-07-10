@@ -6,33 +6,44 @@ import java.math.RoundingMode;
 
 public class Solve {
     private String expression;
-    private double presicion;
+    private int presicion;
 
-    public Solve(String expression, double presicion) {
+    public Solve(String expression, int presicion) {
         this.expression = expression;
         this.presicion = presicion;
     }
 
-    public static double solveExpression(String expression, int precision){
+    public String getExpression() {
+        return expression;
+    }
+    public void setExpression(String expression) {
+        this.expression = expression;
+    }
+
+    public int getPresicion() {
+        return presicion;
+    }
+    public void setPresicion(int presicion) {
+        this.presicion = presicion;
+    }
+
+    public double solveExpression(String expression, int precision){
         Resolver solver = new Resolver();
 
         //solver.setExpression("20+2-12+(10*7)*sqrt(25)+1234.56789");
-        System.out.println(expression);
+        System.out.println("("+Solve.class.getName()+ ") Expression: " + expression);
         solver.setExpression(expression);
 
         double result = 0;
-        String msg="";
         if (solver.solveExpression().success) { //ok
             result = solver.getLastResult();
-            if (precision == 0) {
-                System.out.println(result);
-            } else {
+            if (precision != 0) {
                 result = BigDecimal.valueOf(result).setScale(precision, RoundingMode.HALF_UP).doubleValue();
-                System.out.println(result);
             }
+            System.out.println("("+Solve.class.getName()+ ") Result: " + result);
         } else { //error
-            msg = "Wrong expression dude, please try again!";
-            System.out.println(msg);
+            String msg = "Wrong expression dude, please try again!";
+            System.out.println("("+Solve.class.getName()+ ") Error: " + msg);
         }
 
         return result;

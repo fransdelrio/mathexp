@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>ar.frantest</groupId>
 	<artifactId>mathexp</artifactId>
-	<version>v0.1</version>
+	<version>v1</version>
 	<packaging>war</packaging>
 	<name>mathexp</name>
 	<description>API project for Slingr recruitment test</description>
