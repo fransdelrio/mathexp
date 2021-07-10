@@ -30,8 +30,8 @@ public class Solve {
     public double solveExpression(String expression, int precision){
         Resolver solver = new Resolver();
 
-        //solver.setExpression("20+2-12+(10*7)*sqrt(25)+1234.56789");
-        System.out.println("("+Solve.class.getName()+ ") Expression: " + expression);
+        //solver.setExpression("20+2-12+(10*7)*sqrt(25)+1234.56789"); //test
+        /*Log*/ System.out.println("("+Solve.class.getName()+ ") Expression: " + expression);
         solver.setExpression(expression);
 
         double result = 0;
@@ -40,10 +40,10 @@ public class Solve {
             if (precision != 0) {
                 result = BigDecimal.valueOf(result).setScale(precision, RoundingMode.HALF_UP).doubleValue();
             }
-            System.out.println("("+Solve.class.getName()+ ") Result: " + result);
+            /*Log*/ System.out.println("("+Solve.class.getName()+ ") Result: " + result);
         } else { //error
             String msg = "Wrong expression dude, please try again!";
-            System.out.println("("+Solve.class.getName()+ ") Error: " + msg);
+            /*Log*/ System.out.println("("+Solve.class.getName()+ ") Error: " + msg);
         }
 
         return result;
