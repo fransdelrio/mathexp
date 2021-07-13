@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 @RequestMapping("/api")
 public class RestManager {
 
+    @CrossOrigin(origins = "*")
     @GetMapping("/getSolve")
     public double getSolve(@RequestParam(value = "expression", defaultValue = "") String expression, @RequestParam(value = "precision", defaultValue = "0") int precision){
     /*Log*/ System.out.println("("+RestManager.class.getName()+ ".getSolve) Expresion: " + expression +". Presicion: " + precision);
@@ -15,6 +16,7 @@ public class RestManager {
         return s.solveExpression(expression, precision);
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/postSolve")
     public double postSolve(@RequestBody Solve s) throws JsonProcessingException {
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
